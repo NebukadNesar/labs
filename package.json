@@ -1,0 +1,19 @@
+{
+  "name": "newboston",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "burhanc",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "connect-busboy": "^0.0.2",
+    "express": "^4.15.2",
+    "express-fileupload": "^0.1.2",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.6"
+  }
+}
