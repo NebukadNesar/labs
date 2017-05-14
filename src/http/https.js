@@ -62,7 +62,7 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '../../public/views/index.html'));
 });
 
-app.post('/upload', function(req, res) {o
+app.post('/upload', function(req, res) {
   try {
     JSON.stringify(req.body);
     var list = req.body;
