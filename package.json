@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "npm run clean && mkdir dist && babel src/server -s -d dist",
+    "clean" : "rm -rf dist",
+    "dev" : "node ."
   },
   "author": "burhanc",
   "license": "ISC",

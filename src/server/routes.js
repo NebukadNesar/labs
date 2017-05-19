@@ -1,6 +1,6 @@
 import path from  'path'
 import express from 'express'
-import serverController from "./controllers/serverController"
+import serverController from "./middleware/serverController"
 
 var app = express()
 
