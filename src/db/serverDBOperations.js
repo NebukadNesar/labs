@@ -1,68 +1,70 @@
 /**
-* @auther:burhancerit
+* @auther:burhanc
 * db api
-**/
-var db = require("./dbSchemaCreators")
-var serverInfo = require("../modal/serverInfo")()
+*/
+import db from "./dbSchemaCreators"
+import serverInfo from "../modal/serverInfo"
 
-var Server = db.Server;
-var Admin = db.Admin;
+let serverModel = serverInfo();
+let Server = db.Server;
+let Admin = db.Admin;
+let serverDBOperations = {}
 
 var adminAccount = new Admin({username:"admin", password:"1234"});
 
 /** adds the default admin account **/
-AdminAccounts : () => {
-  Admin.find({username : 'admin'}, function (err, accounts) {
+
+Admin.find({username : 'admin'}, function (err, accounts) {
     if (accounts.length){
-      console.log('Name exists already',null);
+      console.log('Adming name exists already');
     }else{
       adminAccount.save(function (err) {
         if (err) return console.error(err);
       });
     }
-  });
-}()
+});
+
 
 /************************************
 *    ||  database                   *
 *    \/      query operations       *
 ************************************/
 
-findServer = (serverIp,callback) => {
+serverDBOperations.findServer = (serverIp,callback) => {
   Server.find({serverIp: serverIp}, (err, server) => {
     callback(server);
   });
 }
 
-findAllServers = (callback) => {
+serverDBOperations.findAllServers = (callback) => {
   Server.find({}, (err, servers) => {
     callback(servers);
   });
 }
 
-addServer = (serverdetails) => {
+serverDBOperations.addServer = (serverdetails) => {
   var server = new Server({ serverDetails });
   server.save(function (err,res) {
     if (err) return console.error(err);
   });
 }
 
-addServersBulk = (serverlist) => {
+serverDBOperations.addServersBulk = (serverlist) => {
   for (var i = 0; i < serverlist.length; i++) {
-    var server = new Server(serverInfo.server(serverlist[i]));
+    var server = new Server(serverModel.server(serverlist[i]));
     server.save(function (err) {
       if (err) return console.error(err);
     });
   }
 }
 
-deleteServer = (serverIp) =>{
+serverDBOperations.deleteServer = (serverIp) =>{
   Server.findOneAndRemove({serverIp: serverIp}, function(err){
     console.log("Error occured while deleting server : ", serverIp);
   });
 }
 
-deleteServers = () =>{
+serverDBOperations.deleteServers = () =>{
   Server.remove().exec();
 }
 
@@ -70,11 +72,4 @@ deleteServers = () =>{
 /*
 * public db API
 */
-module.exports = {
-  findServer : findServer,
-  addServer : addServer,
-  findAllServers : findAllServers,
-  addServersBulk : addServersBulk,
-  deleteServer : deleteServer,
-  deleteServers : deleteServers
-}
+export default serverDBOperations;

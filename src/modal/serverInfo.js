@@ -1,5 +1,5 @@
 /**
-* @auther:burhancerit
+* @auther:burhanc
 * server data object model
 **/
 module.exports = ()=>{

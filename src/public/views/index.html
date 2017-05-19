@@ -1,12 +1,12 @@
 <html>
 <head>
   <title>Lab management tool</title>
-  <script src="static/libs/jquery-min.js"></script>
-  <script src="static/libs/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="static/libs/bootstrap.min.css">
-  <link rel="stylesheet" href="static/libs/fileupload.css">
-  <link rel="stylesheet" href="static/libs/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="static/libs/materialize.min.css">
+  <script src="client/static/libs/jquery-min.js"></script>
+  <script src="client/static/libs/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="client/static/libs/bootstrap.min.css">
+  <link rel="stylesheet" href="client/static/libs/fileupload.css">
+  <link rel="stylesheet" href="client/static/libs/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="client/static/libs/materialize.min.css">
 
   <script type="text/javascript">
   $(document).ready(function() {
@@ -29,7 +29,7 @@
           type: 'POST',
           data: JSON.stringify(content),
           contentType: 'application/json',
-          url: 'http://localhost:3000/upload',
+          url: 'http://localhost:3000/api/upload',
           success: function(data) {
             console.log('success');
             console.log(JSON.stringify(data));
@@ -111,7 +111,7 @@
       $.ajax({
         type: 'GET',
         contentType: 'application/json',
-        url: 'http://localhost:3000/getAllServers',
+        url: 'http://localhost:3000/api/getAllServers',
         success: function(data) {
           console.log('success');
           console.log(data);
@@ -131,7 +131,7 @@
     }
 
     $('#upload').click(function() {
-      $.get('http://localhost/upload', function(result) {
+      $.get('http://localhost/api/upload', function(result) {
 
       });
     });

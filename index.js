@@ -1,4 +1,2 @@
-/*require('./src/jon');
-require('./src/jin');
-*/
-require('./src/http/https');
+require('babel-core/register');
+require('./src/server/app');

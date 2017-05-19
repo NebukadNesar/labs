@@ -1,8 +1,8 @@
 /**
-* @auther:burhancerit
+* @auther:burhanc
 * db schema creation
 **/
-var mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 /******* connection to mongo db settings *******/
 mongoose.connect("mongodb://localhost/serverManagement");
