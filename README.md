@@ -1,1 +1,1 @@
- THis is a simple labs repository readme file, althought it may be more detailed.
+ This is a simple labs repository management tool readme file
