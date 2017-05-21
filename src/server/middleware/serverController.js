@@ -27,9 +27,14 @@ serverController.delete = (req, res) => {
 }
 
 serverController.getServerInfo= (req, res) => {
-  serverDBController.getServerDetails(req.params.serverip, (serverDetails)=>{
-    serverDetails = serverDetails || serverModel.server();
-    res.send({"serverDetails": serverDetails});
+  serverDBController.getServerDetails(req.params.serverip, (err, serverDetails)=>{
+    if(err){
+      res.send({"serverDetails": null});
+    }else{
+      serverDetails = serverDetails || serverModel.server();
+      console.log(serverDetails);
+      res.send({"success":true,"serverDetails": serverDetails});
+    }
   });
 }
 

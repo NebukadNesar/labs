@@ -15,24 +15,24 @@ var adminAccount = new Admin({username:"admin", password:"1234"});
 /** adds the default admin account **/
 
 Admin.find({username : 'admin'}, function (err, accounts) {
-    if (accounts.length){
-      console.log('Adming name exists already');
-    }else{
-      adminAccount.save(function (err) {
-        if (err) return console.error(err);
-      });
-    }
+  if (accounts.length){
+    console.log('Admin name exists already');
+  }else{
+    adminAccount.save(function (err) {
+      if (err) return console.error(err);
+    });
+  }
 });
-
 
 /************************************
 *    ||  database                   *
 *    \/      query operations       *
 ************************************/
 
-serverDBOperations.findServer = (serverIp,callback) => {
-  Server.find({serverIp: serverIp}, (err, server) => {
-    callback(server);
+serverDBOperations.findServer = (searchString,callback) => {
+  Server.find({serverIp:searchString})
+  .exec((err, docs) => {
+    callback(err, docs);
   });
 }
 
