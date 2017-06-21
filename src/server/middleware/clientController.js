@@ -6,7 +6,8 @@ import path from 'path'
 var clientController = {}
 
 clientController.serveClient = (req, res) => {
-      res.sendFile(path.join(__dirname + '../../../public/views/index.html'));
+      console.log(__dirname);
+      res.sendFile(path.join(__dirname + '/../../public/views/index.html'));
 }
 
 //public

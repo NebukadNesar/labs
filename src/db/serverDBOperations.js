@@ -50,12 +50,22 @@ serverDBOperations.addServer = (serverdetails) => {
 }
 
 serverDBOperations.addServersBulk = (serverlist) => {
-  for (var i = 0; i < serverlist.length; i++) {
+  //dont do this :)
+  /*for (var i = 0; i < serverlist.length; i++) {
     var server = new Server(serverModel.server(serverlist[i]));
     server.save(function (err) {
       if (err) return console.error(err);
     });
-  }
+  } */
+
+  //this is bulk insert
+  /**
+    array = [{server1}, {server2}, ...]
+    Server.insertMany(array, callback);
+  **/
+  Server.insertMany(serverlist, (err, docs)=>{
+    console.log("insert many operation..." + (err ? err : ''));
+  });
 }
 
 serverDBOperations.deleteServer = (serverIp) =>{
