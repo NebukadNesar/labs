@@ -1,4 +1,4 @@
- ##This is a simple labs repository management tool readme file
+ ##This is a simple labs repository management tool
 
  inserting multiple data into mongo database with mongoose and retreiving them with the help of express on nodejs server..
  
